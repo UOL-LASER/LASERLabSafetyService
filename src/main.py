@@ -20,11 +20,17 @@ async def on_message(message):
 
     if message.content.startswith(prefix):
         command = message.content.lstrip(prefix)
+        args = command.split(" ")
         
         try:
-            command_handler = import_module(f"commands.{command}", package=None)
-            await command_handler.lab_entry(message)
+            if len(args) == 1:
+                command_handler = import_module(f"commands.{args[0]}", package=None)
+                await command_handler.command(message)
             
+            else: 
+                command_handler = import_module(f"commands.{args[0]}", package=None)
+                await command_handler.command(message, *args[1:])
+                
         except ImportError as e:
             print(f"Command {command} not found {e}")
             await message.channel.send(f"Command {command} not found dumbass.")
