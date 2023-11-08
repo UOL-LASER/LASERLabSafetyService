@@ -26,13 +26,10 @@ async def on_message(message):
             if len(args) == 1:
                 command_handler = import_module(f"commands.{args[0]}", package=None)
                 await command_handler.command(message)
-                dm_channel = await message.author.create_dm()
-                await dm_channel.send("Hello dumbass")
-                
-            
+                        
             else: 
                 command_handler = import_module(f"commands.{args[0]}", package=None)
-                await command_handler.command(message, *args[1:])
+                await command_handler.command(client, message, *args[1:])
                 
                 
         except ImportError as e:
@@ -41,4 +38,4 @@ async def on_message(message):
 
         
 
-client.run('MTE2NTc1Mzg3NjIwNTU1NTg2NA.G3NIg9.1jXJk9Zb1wCGvQxe6T7NQZj5m1Sf-LpcvaWfDI')
+client.run('')
