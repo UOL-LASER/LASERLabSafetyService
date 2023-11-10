@@ -28,7 +28,7 @@ async def whileinlab(client, message, newlabuser):
     while running_processes.get(id, True):
         await asyncio.sleep(1800)
         print(f"Running processes while running: {running_processes}")
-        await dm_channel.send("Please vertify your safety by replying to this message. \nFailure to do so in the next 10 minutes will result in an alert to check up on you.")
+        await dm_channel.send("Please verify your safety by replying to this message. \nFailure to do so in the next 10 minutes will result in an alert to check up on you.")
         
         try:
             await client.wait_for('message', message.author.id == id, timeout=600)
