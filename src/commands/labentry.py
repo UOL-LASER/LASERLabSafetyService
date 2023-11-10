@@ -14,20 +14,35 @@ async def command(client, message, *args):
         running_processes[id] = True
         print(f"Running processes after set to True: {running_processes}")
         await message.channel.send(f"{message.author.mention}\nYou are signed into the lab.")
-        await asyncio.create_task(whileinlab(message, newlabuser))
+        await asyncio.create_task(whileinlab(client, message, newlabuser))
         
         
         
 
-async def whileinlab(message, newlabuser):
+async def whileinlab(client, message, newlabuser):
     global running_processes
     id = message.author.id
     dm_channel = await message.author.create_dm()
     
+    await dm_channel.send("You are now signed into the lab, please remember to verify your safety every hour. \nEnsure you run *!labexit* in the server when leaving.")
     while running_processes.get(id, True):
+        await asyncio.sleep(1800)
         print(f"Running processes while running: {running_processes}")
-        await dm_channel.send("Hello dumbass, you can't stop this hahahahaha")
-        await asyncio.sleep(10)
+        await dm_channel.send("Please vertify your safety by replying to this message. \nFailure to do so in the next 10 minutes will result in an alert to check up on you.")
+        
+        try:
+            await client.wait_for('message', timeout=600)
+            await dm_channel.send("Safety verification complete.")
+        except asyncio.TimeoutError:
+            await dm_channel.send("No response received. Sending an alert for someone to check up on you.")
+            await message.channel.send(f"@everyone \n**{newlabuser.name}** with Student ID: **{newlabuser.studentid}** signed into the lab at: **{newlabuser.labentrydatetime}**. \nHas failed to respond to a verification check 10 minutes ago, therefore a checkup may be necessary to ensure their well-being.")
+            
+
+            
+            
+        
+        
+        
     running_processes.pop(id, None)
     print(f"Running processes after loop ends: {running_processes}")
 
