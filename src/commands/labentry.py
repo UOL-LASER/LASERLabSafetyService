@@ -31,7 +31,7 @@ async def whileinlab(client, message, newlabuser):
         await dm_channel.send("Please vertify your safety by replying to this message. \nFailure to do so in the next 10 minutes will result in an alert to check up on you.")
         
         try:
-            await client.wait_for('message', timeout=600)
+            await client.wait_for('message', message.author.id == id, timeout=600)
             await dm_channel.send("Safety verification complete.")
         except asyncio.TimeoutError:
             await dm_channel.send("No response received. Sending an alert for someone to check up on you.")
