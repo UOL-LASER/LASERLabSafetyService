@@ -1,4 +1,4 @@
-async def command(message):
+async def command(client, message, *args):
     await message.channel.send('''
 **!labentry** *(Full name)* *(Student ID)*: 
 Upon entry to the lab, please execute this command with the required arguments.

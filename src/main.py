@@ -24,13 +24,8 @@ async def on_message(message):
         args = command.split(" ")
         
         try:
-            if len(args) == 0:
-                command_handler = import_module(f"commands.{args[0]}", package=None)
-                await command_handler.command(message)
-                        
-            else: 
-                command_handler = import_module(f"commands.{args[0]}", package=None)
-                await command_handler.command(client, message, *args[1:])
+            command_handler = import_module(f"commands.{args[0]}", package=None) 
+            await command_handler.command(client, message, *args[1:])
                 
                 
         except ImportError as e:
@@ -39,4 +34,4 @@ async def on_message(message):
 
         
 
-client.run('')
+client.run('MTE2NTc1Mzg3NjIwNTU1NTg2NA.GzXete.LQqC6HbfRwXQkLYMg209Os-Zls6yAgE9JfJHSY')

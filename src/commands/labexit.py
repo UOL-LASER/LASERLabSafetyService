@@ -1,6 +1,6 @@
 from data.globals import running_processes
 
-async def command(message):
+async def command(client, message, *args):
     global running_processes
     id = message.author.id
     
