@@ -24,7 +24,7 @@ async def on_message(message):
         args = command.split(" ")
         
         try:
-            if len(args) == 1:
+            if len(args) == 0:
                 command_handler = import_module(f"commands.{args[0]}", package=None)
                 await command_handler.command(message)
                         
@@ -35,8 +35,8 @@ async def on_message(message):
                 
         except ImportError as e:
             print(f"Command {command} not found {e}")
-            await message.channel.send(f"Command {command} not found dumbass.")
+            await message.channel.send(f"{message.author.mention}\nCommand *{command}* not found.")
 
         
 
-client.run('MTE2NTc1Mzg3NjIwNTU1NTg2NA.GVD4sw.czesiamMze6zfehpZH6rrFcyU98u6Sr3i-jqxQ')
+client.run('')
