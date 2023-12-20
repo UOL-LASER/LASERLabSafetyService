@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "4/6wBOkGdPWrXTG6gCGAOZAC9CiU8+FzKEprqQTnAIzKeMKud3mPFoqxqxVuO7DE4bSNlQZ8QQLn6JhZeOHmlQ==",
+  "success": true,
+  "projectFilePath": "/home/pa1yn/Documents/GitHub/AreYouDeadBot/src/AreYouDeadBot.csproj",
+  "expectedPackageFiles": [
+    "/home/pa1yn/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.13/microsoft.aspnetcore.app.ref.7.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}
