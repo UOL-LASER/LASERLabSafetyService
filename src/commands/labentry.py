@@ -41,6 +41,7 @@ async def whileinlab(client, message, newlabuser):
                 await message.channel.send(f"@everyone \n**{newlabuser.name}** with Student ID: **{newlabuser.studentid}** signed into the lab at: **{newlabuser.labentrydatetime}**. \nHas failed to respond to a verification check 10 minutes ago, therefore a checkup may be necessary to ensure their well-being.")
         
         else:
+            running_processes.pop(id, None)
             return
             
 
