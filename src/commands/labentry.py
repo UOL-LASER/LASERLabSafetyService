@@ -40,16 +40,7 @@ async def whileinlab(client, message, newlabuser):
                 await dm_channel.send("No response received. Sending an alert for someone to check up on you.")
                 await message.channel.send(f"@everyone \n**{newlabuser.name}** with Student ID: **{newlabuser.studentid}** signed into the lab at: **{newlabuser.labentrydatetime}**. \nHas failed to respond to a verification check 10 minutes ago, therefore a checkup may be necessary to ensure their well-being.")
         
-        else:
-            running_processes.pop(id, None)
-            return
-            
-
-            
-            
-        
-        
-        
+    
     running_processes.pop(id, None)
     print(f"Running processes after loop ends: {running_processes}")
 
