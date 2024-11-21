@@ -27,9 +27,9 @@ async def whileinlab(client, message, newlabuser):
     dm_channel = await message.author.create_dm()
     
     await dm_channel.send("You are now signed into the lab, please remember to verify your safety every 30 minutes. \nEnsure you run *!labexit* in the server when leaving.")
-    while id in running_processes:
+    while running_processes[id] == True:
         await asyncio.sleep(1800)
-        if id in running_processes:
+        if running_processes[id] == True:
             print(f"Running processes while running: {running_processes}")
             await dm_channel.send("Please verify your safety by replying to this message. \nFailure to do so in the next 10 minutes will result in an alert to check up on you.")
         
