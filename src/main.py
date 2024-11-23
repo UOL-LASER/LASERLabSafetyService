@@ -1,4 +1,5 @@
 import discord
+import sys
 from importlib import import_module
 import os
 
@@ -34,4 +35,4 @@ async def on_message(message):
 
         
 
-client.run('')
+client.run(sys.argv[1])
