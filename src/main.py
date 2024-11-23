@@ -1,7 +1,13 @@
 import discord
-import sys
 from importlib import import_module
 import os
+
+
+token = os.getenv("DISCORD_SECRET")
+
+if not token:
+    print("Error: DISCORD_SECRET environment variable not found.")
+    exit(1)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -35,4 +41,4 @@ async def on_message(message):
 
         
 
-client.run(sys.argv[1])
+client.run(token)
